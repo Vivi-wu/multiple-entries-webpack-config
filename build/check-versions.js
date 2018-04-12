@@ -1,8 +1,9 @@
+'use strict'
 var chalk = require('chalk')
 // The semantic versioner for npm：https://github.com/npm/node-semver
 var semver = require('semver')
-var packageConfig = require('../package.json')
 var shell = require('shelljs')
+var packageConfig = require('../package.json')
 
 function exec (cmd) {
   return require('child_process').execSync(cmd).toString().trim()

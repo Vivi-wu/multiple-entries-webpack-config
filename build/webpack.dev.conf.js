@@ -14,6 +14,7 @@ const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
+  mode: 'development',
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
   },
@@ -64,7 +65,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
 // https://github.com/ampedandwired/html-webpack-plugin
 /**
- * 每个配置对应于一个页面，有几个需要写几个
+ * Each page needs to have its' own entry point
  * filename: webpack编译指定文件，由html-webpack-plugin储存为html文件到输出目录。默认文件名为index.html
  * template: 指定入口的html文件路径
  * chunks: Limit the chunks being used
@@ -81,7 +82,7 @@ config.build.entries.forEach(function(fname) {
 
   devWebpackConfig.plugins.push(new HtmlWebpackPlugin({
     'filename': filename,
-    'template': './src/pages/'+ fname +'/index.html',
+    'template': './src/pages/'+ fname +'/index.pug',
     'chunks': [fname],
     'inject': true
   }))
@@ -100,9 +101,9 @@ module.exports = new Promise((resolve, reject) => {
 
       // Add FriendlyErrorsPlugin
       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
-        compilationSuccessInfo: {
-          messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
-        },
+        // compilationSuccessInfo: {
+        //   messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
+        // },
         onErrors: config.dev.notifyOnErrors
         ? utils.createNotifierCallback()
         : undefined
