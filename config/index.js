@@ -49,6 +49,15 @@ module.exports = {
     // Set to `true` or `false` to always turn it on or off
     bundleAnalyzerReport: process.env.npm_config_report,
     // 多入口文件名列表：每个页面对应一个同名文件夹
-    entries: ['home', 'about']
+    entries: [
+      'home',
+      'about-us',
+      'ai-plus',
+      'product',
+      'culture',
+      'partner',
+      'join-us',
+      'contact-us'
+    ]
   }
 }

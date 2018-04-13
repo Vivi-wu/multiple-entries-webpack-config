@@ -1,9 +1,20 @@
 doctype html
 html
   head
-    title 多页面Pug模板渲染Web应用
+    block head
+    title 嘉云数据#{title}
   body
-    block content
+    .container-fluid
+      block header
+      //- 头部导航
+      nav.navbar.navbar-expand-lg.navbar-dark
+        a.navbar-brand(href='/') 嘉云数据
+        div.navbar-collapse
+          ul.navbar-nav
+            each val, index in {'关于嘉云':'about-us.html', '人工智能+':'ai-plus.html', '公司产品':'product.html', '团队文化':'culture.html', '合作伙伴':'partner.html', '加入我们':'join-us.html', '联系我们':'contact-us.html'}
+              li.nav-item
+                a.nav-link(href=val class={active: currentUrl === val})= index
+      block content
     block foot
       footer
         p Copyright (c) WU Xue 2018
