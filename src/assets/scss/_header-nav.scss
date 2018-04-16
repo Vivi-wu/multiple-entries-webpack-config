@@ -4,31 +4,29 @@
 // Navbar brand
 // Navbar nav
 // Navbar text
-// Navbar divider
 // Responsive navbar
-// Navbar position
 // Navbar themes
 
-$navbar-padding-y: 10px;
+$navbar-padding-y: 8px;
 $navbar-padding-x: 20px;
-$nav-link-padding-y: 10px;
+$navbar-brand-font-size: 20px;
 $navbar-nav-link-padding-x: 20px;
+$navbar-nav-link-font-size: 14px;
+$navbar-dark-bg-color: #333;
 $navbar-dark-color: grey;
 $navbar-dark-hover-color: #fff;
 $navbar-dark-active-color: #fff;
-$navbar-dark-bg-color: #333;
 
 // Navbar
 //
 // Provide a static navbar from which we expand to create full-width, fixed, and
 // other navbar variations.
-
 .navbar {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap; // allow us to do the line break for collapsing content
-  align-items: center;
-  justify-content: space-between; // space out brand from logo
+  // position: relative;
+  // display: flex;
+  // flex-wrap: wrap; // allow us to do the line break for collapsing content
+  // align-items: center;
+  // justify-content: space-between; // space out brand from logo
   padding: $navbar-padding-y $navbar-padding-x;
 
   // Because flex properties aren't inherited, we need to redeclare these first
@@ -46,15 +44,14 @@ $navbar-dark-bg-color: #333;
 // Navbar brand
 //
 // Used for brand, project, or site names.
-
 .navbar-brand {
   display: inline-block;
   // padding-top: $navbar-brand-padding-y;
   // padding-bottom: $navbar-brand-padding-y;
-  margin-right: $navbar-padding-x;
-  // font-size: $navbar-brand-font-size;
-  line-height: inherit;
-  white-space: nowrap;
+  // margin-right: $navbar-padding-x;
+  font-size: $navbar-brand-font-size;
+  // line-height: inherit;
+  // white-space: nowrap;
 
   @include hover-focus {
     text-decoration: none;
@@ -65,7 +62,6 @@ $navbar-dark-bg-color: #333;
 // Navbar nav
 //
 // Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
-
 .navbar-nav {
   display: flex;
   flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
@@ -74,26 +70,26 @@ $navbar-dark-bg-color: #333;
   list-style: none;
 
   .nav-link {
-    padding-right: 0;
-    padding-left: 0;
+    // padding-right: 0;
+    // padding-left: 0;
+    font-size: $navbar-nav-link-font-size;
   }
 
-  .dropdown-menu {
-    position: static;
-    float: none;
-  }
+  // .dropdown-menu {
+  //   position: static;
+  //   float: none;
+  // }
 }
 
 
 // Navbar text
 //
 //
-
-.navbar-text {
-  display: inline-block;
-  padding-top: $nav-link-padding-y;
-  padding-bottom: $nav-link-padding-y;
-}
+// .navbar-text {
+//   display: inline-block;
+//   padding-top: $nav-link-padding-y;
+//   padding-bottom: $nav-link-padding-y;
+// }
 
 
 // Responsive navbar
@@ -110,6 +106,7 @@ $navbar-dark-bg-color: #333;
   // For always expanded or extra full navbars, ensure content aligns itself
   // properly vertically. Can be easily overridden with flex utilities.
   align-items: center;
+  justify-content: flex-end;
 }
 
 // Button for toggling the navbar when in its collapsed state
@@ -160,20 +157,20 @@ $navbar-dark-bg-color: #333;
       }
 
       @include media-breakpoint-up($next) {
-        flex-flow: row nowrap;
-        justify-content: flex-start;
+        // flex-flow: row nowrap;
+        // justify-content: flex-start;
 
         .navbar-nav {
           flex-direction: row;
-
-          .dropdown-menu {
-            position: absolute;
-          }
-
           .nav-link {
             padding-right: $navbar-nav-link-padding-x;
             padding-left: $navbar-nav-link-padding-x;
           }
+
+          // .dropdown-menu {
+          //   position: absolute;
+          // }
+
         }
 
         // For nesting containers, have to redeclare for alignment purposes
@@ -189,9 +186,9 @@ $navbar-dark-bg-color: #333;
           flex-basis: auto;
         }
 
-        .navbar-toggler {
-          display: none;
-        }
+        // .navbar-toggler {
+        //   display: none;
+        // }
       }
     }
   }
@@ -295,14 +292,14 @@ $navbar-dark-bg-color: #333;
   //   background-image: $navbar-dark-toggler-icon-bg;
   // }
 
-  .navbar-text {
-    color: $navbar-dark-color;
-    a {
-      color: $navbar-dark-active-color;
+  // .navbar-text {
+  //   color: $navbar-dark-color;
+  //   a {
+  //     color: $navbar-dark-active-color;
 
-      @include hover-focus {
-        color: $navbar-dark-active-color;
-      }
-    }
-  }
+  //     @include hover-focus {
+  //       color: $navbar-dark-active-color;
+  //     }
+  //   }
+  // }
 }
