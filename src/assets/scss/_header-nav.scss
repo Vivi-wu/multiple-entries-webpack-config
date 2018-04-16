@@ -6,6 +6,7 @@
 // Navbar text
 // Responsive navbar
 // Navbar themes
+// Navbar position
 
 $navbar-padding-y: 8px;
 $navbar-padding-x: 20px;
@@ -302,4 +303,14 @@ $navbar-dark-active-color: #fff;
   //     }
   //   }
   // }
+}
+
+// Navbar position
+//
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: $zindex-fixed;
 }
