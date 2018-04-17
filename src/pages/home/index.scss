@@ -12,7 +12,8 @@ section {
   &.evenly-divided-content {
     align-items: stretch;
     & > .wrapper {
-      flex-grow: 1;
+      /* Three values: flex-grow | flex-shrink | flex-basis */
+      flex: 1 1 0;
     }
   }
 }

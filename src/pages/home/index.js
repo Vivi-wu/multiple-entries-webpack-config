@@ -19,7 +19,8 @@ require('./_product.pug')
 // if (module.hot) module.hot.accept()
 }
 
-// 使用jsonp异步加载地图需要在全局作用域定义callback
+// 异步加载
+// https://lbs.amap.com/api/javascript-api/guide/function/loading
 window.initMap = initMap
 
 $(function() {
