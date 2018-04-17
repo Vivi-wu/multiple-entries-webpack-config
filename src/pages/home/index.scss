@@ -1,3 +1,25 @@
-#test {
-  color: lightblue;
+section {
+  display: flex;
+  min-height: 20rem;
+  &.centered-content {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid;
+  }
+  &.evenly-divided-content {
+    align-items: stretch;
+    & > .wrapper {
+      flex-grow: 1;
+    }
+  }
+}
+
+// Contact Us 模块
+//
+#map-container {
+  width: 100%;
+  height: 100%;
 }

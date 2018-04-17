@@ -1,9 +1,17 @@
 extends ../../components/common/layout.pug
 
 block content
-  h1 This is home page
-  div
-    a(href='about.html' target='_blank') Go to About Us
-  .row#test
-    .col-sm-2 .col-2
-    .col-sm-10 .col-10
+  section.centered-content
+    include _about.pug
+  section.centered-content
+    include _ai.pug
+  section.centered-content
+    include _product.pug
+  section.centered-content
+    include _culture.pug
+  section.centered-content
+    include _partner.pug
+  section.centered-content
+    include _joinUs.pug
+  section.evenly-divided-content
+    include _contactUs.pug
