@@ -2,7 +2,8 @@
 
 var path = require('path')
 var config = require('../config')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+// var ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 var packageConfig = require('../package.json')
 
 
@@ -38,10 +39,7 @@ exports.cssLoaders = function (options) {
     // Extract CSS when that option is specified
     // (which is the case during production build)
     if (options.extract) {
-      return ExtractTextPlugin.extract({
-        use: loaders,
-        fallback: 'style-loader'
-      })
+      return ['style-loader'].concat([MiniCssExtractPlugin.loader], loaders)
     } else {
       return ['style-loader'].concat(loaders)
     }
