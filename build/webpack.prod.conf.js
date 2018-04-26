@@ -60,8 +60,7 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
       'process.env': require('../config/prod.env')
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].[contenthash].css",
-      chunkFilename: "[id].css"
+      filename: utils.assetsPath('css/[name].[contenthash].css'),
     }),
     // split vendor js into its own file
     // new webpack.optimize.CommonsChunkPlugin({
