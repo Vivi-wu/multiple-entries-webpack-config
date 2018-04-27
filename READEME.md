@@ -2,20 +2,6 @@
 
 > Inspired by vue-cli
 
-## Expect Result
-
-1. External JS
-
-  `home.html`: home.js, vendor.js(Bootstrap (v4.0.0-alpha.6) modal, jQuery JavaScript Library v3.2.1), manifest.js
-
-  `about.html`: about.js
-
-2. External CSS
-
-  `home.html`: common.css, home.css
-
-  `about.html`: common.css, about.css
-
 ## Build Setup
 
 ``` bash
@@ -45,7 +31,7 @@ browser-sync start --server --index 'index.html'
 
 ## Tips for Development
 
-每个 index.js 文件头部都有如下代码，使用情景见注释：
+每个 index.js 文件开始都有如下代码，使用情景见注释：
 
 ```js
 if (process.env.NODE_ENV === 'development') {
