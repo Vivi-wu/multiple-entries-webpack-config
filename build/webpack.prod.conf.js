@@ -46,12 +46,12 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
     ],
     splitChunks: {
       cacheGroups: {
-        styles: {
-          name: 'styles',
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true
-        }
+        // styles: {
+        //   name: 'styles',
+        //   test: /\.css$/,
+        //   chunks: 'all',
+        //   enforce: true
+        // }
       }
     }
   },
@@ -81,15 +81,6 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'manifest',
     //   minChunks: Infinity
-    // }),
-    // extract common css lib (ex: bootstrap) to common.css
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'common',
-    //   minChunks: function (module, count) {
-    //     let resource = module.resource
-    //     // 以 .css 结尾的资源，重复 require 大于 1 次
-    //     return resource && /\.css$/.test(resource) && count > 1
-    //   }
     // }),
     // copy custom static assets
     new CopyWebpackPlugin([
