@@ -1,3 +1,6 @@
+//
+// Color system
+//
 $white:    #fff !default;
 $gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;
@@ -9,20 +12,6 @@ $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
-
-$grays: () !default;
-$grays: map-merge((
-  "100": $gray-100,
-  "200": $gray-200,
-  "300": $gray-300,
-  "400": $gray-400,
-  "500": $gray-500,
-  "600": $gray-600,
-  "700": $gray-700,
-  "800": $gray-800,
-  "900": $gray-900
-), $grays);
-
 $red:      #f15440 !default;
 
 $primary:       $red !default;
@@ -40,7 +29,15 @@ $theme-colors: map-merge((
   // "dark":       $dark
 ), $theme-colors);
 
-// // Spacing
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+$enable-grid-classes:       true !default;
+
+
+//
+// Spacing
 //
 // Control the default styling of most Bootstrap elements by modifying these
 // variables. Mostly focused on spacing.
@@ -89,14 +86,14 @@ $paragraph-margin-bottom:   1rem !default;
 
 
 // Forms
-$label-margin-bottom:                   .5rem !default;
+// $label-margin-bottom:                   .5rem !default;
 
 
 // Tables
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
 
-$table-cell-padding:          .75rem !default;
+// $table-cell-padding:          .75rem !default;
 
 
 // Grid breakpoints
@@ -134,6 +131,16 @@ $grid-columns:                12 !default;
 $grid-gutter-width:           30px !default;
 
 
+//
+// Borders
+//
+$border-width:                1px !default;
+$border-color:                $gray-300 !default;
+
+$border-radius:               .25rem !default;
+$border-radius-lg:            .3rem !default;
+$border-radius-sm:            .2rem !default;
+
 // Fonts
 //
 // Font, line-height, and color for body text, headings, and more.
@@ -163,21 +170,16 @@ $h6-font-size:                $font-size-base !default;
 
 $text-muted:                  $gray-600 !default;
 
-// Options
-//
-// Quickly modify global styling by enabling or disabling optional features.
-$enable-grid-classes:       true !default;
-
 
 // Z-index master list
 //
 // Warning: Avoid customizing these values. They're used for a bird's eye view
 // of components dependent on the z-axis and are designed to all work together.
 
-$zindex-dropdown:                   1000 !default;
+// $zindex-dropdown:                   1000 !default;
 $zindex-sticky:                     1020 !default;
 $zindex-fixed:                      1030 !default;
-$zindex-modal-backdrop:             1040 !default;
-$zindex-modal:                      1050 !default;
-$zindex-popover:                    1060 !default;
-$zindex-tooltip:                    1070 !default;
+// $zindex-modal-backdrop:             1040 !default;
+// $zindex-modal:                      1050 !default;
+// $zindex-popover:                    1060 !default;
+// $zindex-tooltip:                    1070 !default;

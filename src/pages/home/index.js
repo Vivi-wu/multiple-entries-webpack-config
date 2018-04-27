@@ -1,9 +1,9 @@
+import $ from 'jquery'
+import { initMap, addMapScript } from './_contactUs.js'
 // common style
 import '@/assets/scss/main.scss'
 // current page style
 import './index.scss'
-import $ from 'jquery'
-import { initMap, addMapScript } from './_contactUs.js'
 
 if (process.env.NODE_ENV === 'development') {
 require('./index.pug')
