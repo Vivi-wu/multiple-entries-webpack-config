@@ -102,7 +102,7 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
   ]
 })
 
-// https://github.com/ampedandwired/html-webpack-plugin
+// https://github.com/jantimon/html-webpack-plugin
 /**
  * 每个配置对应于一个页面，有几个需要写几个
  * filename: webpack编译指定文件，由html-webpack-plugin储存为html文件到输出目录。默认文件名为index.html
@@ -111,29 +111,38 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
  * inject: When passing true or 'body' all javascript resources will be
    placed at the bottom of the body element
  */
-var filename = ''
 config.build.entries.forEach(function(fname) {
   if (fname === 'home') {
-    filename = 'index.html'
+    prodWebpackConfig.plugins.push(new HtmlWebpackPlugin({
+      'filename': 'index.html',
+      'template': './src/pages/'+ fname +'/index.pug',
+      'inject': true,
+      'chunks': ['vendor', 'manifest', fname],
+      'minify': {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true
+        // more options:
+        // https://github.com/kangax/html-minifier#options-quick-reference
+      },
+      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+      'chunksSortMode': 'dependency'
+    }))
   } else {
-    filename = fname + '.html'
+    prodWebpackConfig.plugins.push(new HtmlWebpackPlugin({
+      'filename': fname + '.html',
+      'template': './src/pages/'+ fname +'/index.pug',
+      'inject': false,
+      'minify': {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true
+      },
+      // filename prefix，在不需要JS的页面手动引入css时，通过该标记判断引入哪一个css文件
+      'fnPrefix': fname
+    }))
   }
 
-  prodWebpackConfig.plugins.push(new HtmlWebpackPlugin({
-    'filename': filename,
-    'template': './src/pages/'+ fname +'/index.pug',
-    'inject': true,
-    'chunks': ['vendor', 'manifest', fname],
-    'minify': {
-      removeComments: true,
-      collapseWhitespace: true,
-      removeAttributeQuotes: true
-      // more options:
-      // https://github.com/kangax/html-minifier#options-quick-reference
-    },
-    // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-    'chunksSortMode': 'dependency'
-  }))
 })
 
 // if (config.build.productionGzip) {

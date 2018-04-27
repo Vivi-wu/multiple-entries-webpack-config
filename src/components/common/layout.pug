@@ -3,6 +3,11 @@ html
   head
     block head
     title 嘉云数据#{title}
+    //- 手动插入样式文件
+    if enableManualInject
+      each css in htmlWebpackPlugin.files.css
+        if css.indexOf(htmlWebpackPlugin.options.fnPrefix) > 0
+          link(href=css, rel='stylesheet')
   body
     block header
     //- 头部导航
