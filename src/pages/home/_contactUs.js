@@ -2,11 +2,18 @@ function initMap () {
   // 第一个参数为地图容器的元素id
   let map = new AMap.Map('map-container', {
     resizeEnable: true,
-    zoom: 11,
-    center: [116.397428, 39.90923]
+    zoom: 17,
+    center: [120.12478, 30.277046]
+  });
+  let icon = new AMap.Icon({
+    image: require('images/pin.png'),
+    //icon可缺省，缺省时为默认的蓝色水滴图标，
+    size: new AMap.Size(32, 38),
+    imageSize: new AMap.Size(32, 38)
   });
   let marker = new AMap.Marker({
-    position: [116.480983, 39.989628],//marker所在的位置
+    icon: icon,
+    position: [120.12478, 30.277046],//marker所在的位置
     map: map
   });
   marker.setMap(map);

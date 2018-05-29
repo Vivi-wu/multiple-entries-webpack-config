@@ -24,7 +24,7 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    chunkFilename: utils.assetsPath('js/[name].[chunkhash].js')
   },
   optimization: {
     minimizer: [
@@ -46,6 +46,12 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
     ],
     splitChunks: {
       cacheGroups: {
+        // includes all code shared between entry points
+        commons: {
+          name: "common",
+          chunks: "initial",
+          minChunks: 2
+        }
         // styles: {
         //   name: 'styles',
         //   test: /\.css$/,
@@ -63,25 +69,6 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
     new MiniCssExtractPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css'),
     }),
-    // split vendor js into its own file
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'vendor',
-    //   minChunks: function (module, count) {
-    //     let resource = module.resource
-    //     // any required modules inside node_modules are extracted to vendor
-    //     return (
-    //       resource &&
-    //       /\.js$/.test(resource) &&
-    //       resource.indexOf(
-    //         path.join(__dirname, '../node_modules')
-    //       ) === 0
-    //     )
-    //   }
-    // }),
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'manifest',
-    //   minChunks: Infinity
-    // }),
     // copy custom static assets
     new CopyWebpackPlugin([
       {
@@ -108,7 +95,7 @@ config.build.entries.forEach(function(fname) {
       'filename': 'index.html',
       'template': './src/pages/'+ fname +'/index.pug',
       'inject': true,
-      'chunks': ['vendor', 'manifest', fname],
+      'chunks': ['common', fname], // 需要与 optimization.splitChunks.cacheGroups.commons 中的 name 保持一致
       'minify': {
         removeComments: true,
         collapseWhitespace: true,

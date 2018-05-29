@@ -2,6 +2,8 @@
 
 > Inspired by vue-cli
 
+Webpack 4, Bootstrap 4, jQuery 3, Babel, Sass, Pug.
+
 ## Build Setup
 
 ``` bash
@@ -31,7 +33,7 @@ browser-sync start --server --index 'index.html'
 
 ## Tips for Development
 
-每个 index.js 文件开始都有如下代码，使用情景见注释：
+1. 在每个 index.js 文件开始处插入以下代码。
 
 ```js
 if (process.env.NODE_ENV === 'development') {
@@ -43,16 +45,31 @@ if (process.env.NODE_ENV === 'development') {
 }
 ```
 
-如果不这样做，每次修改js文件就会刷新整个页面，而修改pug文件又没有自动刷新页面。
+这样做的原因是：每次修改js文件会刷新整个页面，而修改pug文件没有自动刷新页面。
 
 通过 console 看到 webpack-dev-server 的 log：
 
 <img src="/accept-HMR.png" alt="Rebase feature onto master">
 
-原因：虽然 _devServer.hot_ 开启了 webpack 的 Hot Module Replacement 功能，但 HMR 是一个 opt-in 功能，[只影响包含了HMR code的模块](https://webpack.js.org/concepts/hot-module-replacement/#in-a-module)。
+虽然 _devServer.hot_ 开启了 webpack 的 Hot Module Replacement 功能，但 HMR 是一个 opt-in 功能，[只影响包含了HMR code的模块](https://webpack.js.org/concepts/hot-module-replacement/#in-a-module)。
 
 style-loader 实现了 HMR 的接口，所以修改 .css/.scss 文件可热替换而无刷新。
 
 因此需要对 .js 文件（每个文件是一个 module）添加上述代码才能实现热替换无刷新。
 
-vue-loader/lib/loader.js 中已写了上述代码。
+为什么 Vue CLI 项目不需要写？vue-loader/lib/loader.js 中已包含上述代码。
+
+2. 让 Webpack 管理图片等静态资源路径。
+
+配置 resolve alias 是 'images'，指向 src/assets/img/ 目录。使用方法如下：
+
+.pug 文件
+
+```html
+img(src=require('images/company_logo.png') width='346' height='20' alt='company logo')
+```
+.scss 文件
+
+```css
+background-image: url('~images/innovation/banner_bg.png');
+```
